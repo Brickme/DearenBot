@@ -114,11 +114,10 @@ def handle_message(event):
                         title='Keyword',
                         text='Toram Online',
                         actions=[
-                            #URITemplateAction(
+                            MessageTemplateAction(
                                 label='Toram News',
-                                data='action=add&itemid=111',
                                 text='toramnews'
-                            #)
+                            )
                         ]
                     ),
                     CarouselColumn(
