@@ -114,14 +114,14 @@ def handle_message(event):
                         title='Keyword',
                         text='Toram Online',
                         actions=[
-                            MessageTemplateAction(
-                                label='Toram News',
-                                text='toramnews'
-                            ),
-                            MessageTemplateAction(
-                                label='Skill Simulator',
-                                text='skillsimulator'
-                            ),
+                            #MessageTemplateAction(
+                            #    label='Toram News',
+                            #    text='toramnews'
+                            #),
+                            #MessageTemplateAction(
+                            #    label='Skill Simulator',
+                            #    text='skillsimulator'
+                            #),
                             MessageTemplateAction(
                                 label='StatFormula',
                                 text='statformula'
