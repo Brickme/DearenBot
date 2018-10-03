@@ -1,5 +1,7 @@
 ## For install Tutorial [HERE](https://www.youtube.com/watch?v=tffqvyI_K3A)
 ## Deploy to Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/renazel/RenazelBot)
+
 #Ganti token dan chanel screet mu! di file app.py
 ```python
 # Channel Access Token
