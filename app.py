@@ -111,12 +111,13 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        title='ADD ME',
-                        text='Contact finbot',
+                        title='Keyword',
+                        text='Toram Online',
                         actions=[
                             URITemplateAction(
-                                label='>TAP HERE<',
-                                uri='https://line.me/ti/p/~kangnur04'
+                                label='Toram News',
+                                data='action=add&itemid=111',
+                                text='toramnews'
                             )
                         ]
                     ),
