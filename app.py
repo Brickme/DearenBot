@@ -94,15 +94,15 @@ def shorten(url):
                 actions=[
                     MessageTemplateAction(
                         label='Culum 1',
-                        text='/finbot'
+                        text='/renbot'
                     ),
                     MessageTemplateAction(
                         label='CULUM 2',
-                        text='/finbot'
+                        text='/renbot'
                     ),
                     MessageTemplateAction(
                         label='CULUM 3',
-                        text='/finbot'
+                        text='/renbot'
                     )
                 ]
             )
@@ -121,7 +121,7 @@ def shorten(url):
                         actions=[
                             URITemplateAction(
                                 label='>TAP HERE<',
-                                uri='https://line.me/ti/p/~kangnur04'
+                                uri='https://line.me/ti/p/~tiodarren'
                             )
                         ]
                     ),
@@ -131,7 +131,7 @@ def shorten(url):
                         actions=[
                             URITemplateAction(
                                 label='>TAP HERE!<',
-                                uri='http://line.me/ti/p/~kangnur04'
+                                uri='http://line.me/ti/p/~tiodarren'
                             )
                         ]
                     )
@@ -148,7 +148,7 @@ def shorten(url):
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://line.me/ti/p/~kangnur04', label='label')
+                action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
@@ -227,7 +227,7 @@ def shorten(url):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='finbot', uri="https://line.me/ti/p/~kangnur04")
+                        action=URIAction(label='renbot', uri="https://line.me/ti/p/~tiodarren")
                     )
                 ]
             ),
