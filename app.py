@@ -105,7 +105,7 @@ def handle_message(event):
         
         line_bot_api.reply_message(event.reply_token, buttons_template)
 #=====[ CAROUSEL MESSAGE ]==========
-    elif text == '/carousel':
+    elif text == 'help':
         message = TemplateSendMessage(
             alt_text='OTHER MENU',
             template=CarouselTemplate(
@@ -114,20 +114,27 @@ def handle_message(event):
                         title='Keyword',
                         text='Toram Online',
                         actions=[
-                            PostbackTemplateAction(
+                            MessageTemplateAction(
                                 label='Toram News',
-                                text='toramnews',
-                                data='action=buy&itemid=1'
+                                text='toramnews'
+                            ),
+                            MessageTemplateAction(
+                                label='Skill Simulator',
+                                text='skillsimulator'
+                            ),
+                            MessageTemplateAction(
+                                label='StatFormula',
+                                text='statformula'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        title='Instagram',
-                        text='FIND ME ON INSTAGRAM',
+                        title='keyword 2',
+                        text='Media',
                         actions=[
                             URITemplateAction(
-                                label='>TAP HERE!<',
-                                uri='http://line.me/ti/p/~kangnur04'
+                                label='lorem',
+                                uri='https://google.com'
                             )
                         ]
                     )
