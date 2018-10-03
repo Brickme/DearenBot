@@ -65,11 +65,6 @@ def handle_message(event):
     text = event.message.text #simplify for receove message
     sender = event.source.user_id #get user_id
     gid = event.source.sender_id #get group_id
-    
-def shorten(url):
-    r = requests.get("http://tinyurl.com/api-create.php?url={}".format(url))
-    short = r.text
-    return short
 #=====[ LEAVE GROUP OR ROOM ]==========
     if text == 'bye':
         if isinstance(event.source, SourceGroup):
@@ -94,15 +89,15 @@ def shorten(url):
                 actions=[
                     MessageTemplateAction(
                         label='Culum 1',
-                        text='/renbot'
+                        text='/finbot'
                     ),
                     MessageTemplateAction(
                         label='CULUM 2',
-                        text='/renbot'
+                        text='/finbot'
                     ),
                     MessageTemplateAction(
                         label='CULUM 3',
-                        text='/renbot'
+                        text='/finbot'
                     )
                 ]
             )
@@ -121,7 +116,7 @@ def shorten(url):
                         actions=[
                             URITemplateAction(
                                 label='>TAP HERE<',
-                                uri='https://line.me/ti/p/~tiodarren'
+                                uri='https://line.me/ti/p/~kangnur04'
                             )
                         ]
                     ),
@@ -131,7 +126,7 @@ def shorten(url):
                         actions=[
                             URITemplateAction(
                                 label='>TAP HERE!<',
-                                uri='http://line.me/ti/p/~tiodarren'
+                                uri='http://line.me/ti/p/~kangnur04'
                             )
                         ]
                     )
@@ -148,7 +143,7 @@ def shorten(url):
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
+                action=URIAction(uri='http://line.me/ti/p/~kangnur04', label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
@@ -227,7 +222,7 @@ def shorten(url):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='renbot', uri="https://line.me/ti/p/~tiodarren")
+                        action=URIAction(label='finbot', uri="https://line.me/ti/p/~kangnur04")
                     )
                 ]
             ),
@@ -353,12 +348,15 @@ def shorten(url):
                 link = data.get('href')
                 title3 = data.text
                 title2 = title3.replace("2018-","Time: 2018-")
-                title1 = title2.replace("								T","")
-                title = title1.replace("								","\nTitle: ")
+                title = title2.replace("								","\nTitle: ")
+                #titles = title.replace("								","")
                 #titletime = time +' '+ title #time title
                 links = "http://id.toram.jp"+link #http://id.toram.jp/link
                 #===================================================#
-                short = shorten(links)
+                web = requests.get("https://tinyurl.com/create.php?source=indexpage&url="+ links)
+                shorturl = BeautifulSoup(web.text, 'html5lib')
+                short  = shorturl.find_all('div',class_='indent')
+                short = short[1].find('b').text
                 #====================================================#
                 hasil += "\n"+title+"\nLink: "+short
                 i=i+1
