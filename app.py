@@ -118,10 +118,11 @@ def handle_message(event):
                             #    label='Toram News',
                             #    text='toramnews'
                             #),
-                            #MessageTemplateAction(
-                            #    label='Skill Simulator',
-                            #    text='skillsimulator'
-                            #),
+                            PostbackTemplateAction(
+                                label='Skill Simulator',
+                                text='skillsimulator',
+                                data='action=buy&itemid=1'
+                            ),
                             MessageTemplateAction(
                                 label='StatFormula',
                                 text='statformula'
