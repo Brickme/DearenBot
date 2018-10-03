@@ -114,9 +114,10 @@ def handle_message(event):
                         title='Keyword',
                         text='Toram Online',
                         actions=[
-                            MessageTemplateAction(
+                            PostbackTemplateAction(
                                 label='Toram News',
-                                text='toramnews'
+                                text='toramnews',
+                                data='action=buy&itemid=1'
                             )
                         ]
                     ),
