@@ -36,9 +36,9 @@ from linebot.models import (
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('cTWmUANh7KGLR4Cxc86sr9cO8OBFBBhBL+C5jq0d+3t4IgtAVqE/Rd9YVA/NgjeuttBPAeJW5QBEFn5ur3wHRfEViZcScGhbg2NrEMaTNeC0+V6N64JUwOmEbnbAkd69yv/MZ/+8SzrISK7SsOnbAwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('change to your channel access token')
 # Channel Secret
-handler = WebhookHandler('5e4444d3b86cf740212e7d8e8764a1fc')
+handler = WebhookHandler('change to your channel secret')
 #===========[ NOTE SAVER ]=======================
 notes = {}
 #================================================
@@ -88,16 +88,16 @@ def handle_message(event):
                 text= 'Tap the Button',
                 actions=[
                     MessageTemplateAction(
-                        label='Culum 1',
-                        text='/finbot'
+                        label='kolom 1',
+                        text='/renbot'
                     ),
                     MessageTemplateAction(
-                        label='CULUM 2',
-                        text='/finbot'
+                        label='kolom 2',
+                        text='/renbot'
                     ),
                     MessageTemplateAction(
-                        label='CULUM 3',
-                        text='/finbot'
+                        label='kolom 3',
+                        text='/renbot'
                     )
                 ]
             )
@@ -158,7 +158,7 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text='finbot', weight='bold', size='xl'),
+                    TextComponent(text='renbot', weight='bold', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
@@ -231,7 +231,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='finbot', uri="https://line.me/ti/p/~tiodarren")
+                        action=URIAction(label='renbot', uri="https://line.me/ti/p/~tiodarren")
                     )
                 ]
             ),
