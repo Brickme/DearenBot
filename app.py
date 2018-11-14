@@ -152,7 +152,7 @@ def handle_message(event):
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://line.me/ti/p/~kangnur04', label='label')
+                action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
@@ -231,7 +231,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='finbot', uri="https://line.me/ti/p/~kangnur04")
+                        action=URIAction(label='finbot', uri="https://line.me/ti/p/~tiodarren")
                     )
                 ]
             ),
@@ -251,7 +251,7 @@ def handle_message(event):
             #    size='full',
             #    aspect_ratio='20:13',
             #    aspect_mode='cover',
-            #    action=URIAction(uri='http://line.me/ti/p/~kangnur04', label='label')
+            #    action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
             #),
             body=BoxComponent(
                 layout='vertical',
