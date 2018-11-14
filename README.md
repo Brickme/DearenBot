@@ -1,6 +1,6 @@
 ## For install Tutorial [HERE](https://www.youtube.com/watch?v=tffqvyI_K3A)
 ## Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/renazel/RenazelBot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dearenz/DearenBot)
 
 #Ganti token dan chanel screet mu! di file app.py
 ```python
@@ -14,11 +14,11 @@ handler = WebhookHandler('ISI CHHANEL SCREET')
 2. sudo pip install line-bot-sdk
 3. sudo pip install flask
 4. curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-5. git clone https://github.com/dearenteo/RenazelBot
+5. git clone https://github.com/dearenz/DearenBot
 6. EDIT TOKEN + SECRET DULU
 7. Buka folder git kalian
 ```shell＝
-cd RenazelBot
+cd DearenBot
 ```
 8. Login Ke Heroku
 ```shell＝
@@ -42,7 +42,7 @@ git add .
 ```
 13. Lalu commit
 ```shell
-git commit -m "dearenteo"
+git commit -m "dearenz"
 ```
 14. Push ke heroku
 ```shell
