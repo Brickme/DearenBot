@@ -38,6 +38,12 @@ line_bot_api = LineBotApi('ISI TOKEN OA KALIAN')
 handler = WebhookHandler('ISI CHHANEL SCREET')
 #===========[ NOTE SAVER ]=======================
 notes = {}
+# Get Request
+@app.route("/", methods=['GET'])
+def index():
+    indexed = ('Hello World')
+    return indexed
+
 
 # Post Request
 @app.route("/callback", methods=['POST'])
