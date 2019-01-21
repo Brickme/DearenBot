@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-/////
 from flask import Flask, request, abort
 
 from linebot import (
@@ -15,9 +14,6 @@ import errno
 import os
 import sys, random
 import tempfile
-
-import bs4
-from bs4 import BeautifulSoup
 
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
@@ -36,25 +32,17 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 # Channel Access Token
-line_bot_api = LineBotApi('cTWmUANh7KGLR4Cxc86sr9cO8OBFBBhBL+C5jq0d+3t4IgtAVqE/Rd9YVA/NgjeuttBPAeJW5QBEFn5ur3wHRfEViZcScGhbg2NrEMaTNeC0+V6N64JUwOmEbnbAkd69yv/MZ/+8SzrISK7SsOnbAwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('YOUR CHANNEL ACCESS TOKEN')
 # Channel Secret
-handler = WebhookHandler('5e4444d3b86cf740212e7d8e8764a1fc')
+handler = WebhookHandler('YOUR CHANEL SCREET')
 #===========[ NOTE SAVER ]=======================
 notes = {}
-#========================== MODULE BOTS ===================================#
-keyword =  {"rom":False}
 
-#================================================
-#index web
 @app.route("/", methods=['GET'])
-def index(): 
-    indexs = ('Hello Worlds!')
-    return indexs
-  
+def index():
+    return 'HelloWorld'
+
 # Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -72,7 +60,7 @@ def handle_message(event):
     text = event.message.text #simplify for receove message
     sender = event.source.user_id #get user_id
     gid = event.source.sender_id #get group_id
-#=====[ LEAVE GROUP OR ROOM ]==========
+#=====[ LEAVE GROUP OR ROOM ]==========[ ARSYBAI ]======================
     if text == 'bye':
         if isinstance(event.source, SourceGroup):
             line_bot_api.reply_message(
@@ -86,82 +74,54 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't leave from 1:1 chat"))
-#=====[ TEMPLATE MESSAGE ]=============
+#=====[ TEMPLATE MESSAGE ]=============[ ARSYBAI ]======================
     elif text == '/template':
         buttons_template = TemplateSendMessage(
-            alt_text='templates',
+            alt_text='template',
             template=ButtonsTemplate(
                 title='[ TEMPLATE MSG ]',
                 text= 'Tap the Button',
                 actions=[
                     MessageTemplateAction(
-                        label='kolom 1',
-                        text='/renbot'
+                        label='Culum 1',
+                        text='/arsybai'
                     ),
                     MessageTemplateAction(
-                        label='kolom 2',
-                        text='/renbot'
+                        label='CULUM 2',
+                        text='/arsybai'
                     ),
                     MessageTemplateAction(
-                        label='kolom 3',
-                        text='/renbot'
+                        label='CULUM 3',
+                        text='/arsybai'
                     )
                 ]
             )
         )
         
         line_bot_api.reply_message(event.reply_token, buttons_template)
-        
-    elif text == '/renbot':
-        keyword["rom"]=True
-        line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="silahkan masukan pencarian"))
-                
-    elif keyword["rom"] == True:
-        try:
-            keyword["rom"]=False
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=text))
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=str(e)))
-        
-        
-#=====[ CAROUSEL MESSAGE ]==========
-    elif text == 'help':
+#=====[ CAROUSEL MESSAGE ]==========[ ARSYBAI ]======================
+    elif text == '/carousel':
         message = TemplateSendMessage(
             alt_text='OTHER MENU',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        title='Keyword',
-                        text='Toram Online',
+                        title='CAROUSEL 1',
+                        text='This Carousel URI action',
                         actions=[
-                            #MessageTemplateAction(
-                            #    label='Toram News',
-                            #    text='toramnews'
-                            #),
-                            PostbackTemplateAction(
-                                label='Skill Simulator',
-                                text='skillsimulator',
-                                data='action=buy&itemid=1'
-                            ),
-                            MessageTemplateAction(
-                                label='StatFormula',
-                                text='statformula'
+                            URITemplateAction(
+                                label='>carousel 1<',
+                                uri='https://line.me/ti/p/~arsy22bai'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        title='keyword 2',
-                        text='Media',
+                        title='ABAI-API',
+                        text='API documentation',
                         actions=[
                             URITemplateAction(
-                                label='lorem',
-                                uri='https://google.com'
+                                label='>Visit<',
+                                uri='https://arsybaiapi.herokuapp.com'
                             )
                         ]
                     )
@@ -169,22 +129,22 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token, message)
-#=====[ FLEX MESSAGE ]==========
+#=====[ FLEX MESSAGE ]==========[ ARSYBAI ]======================
     elif text == 'flex':
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url='https://lh5.googleusercontent.com/VoOmR6tVRwKEow0HySsJ_UdrQrqrpwUwSzQnGa0yBeqSex-4Osar2w-JohT6yPu4Vl4qchND78aU2c5a5Bhl=w1366-h641-rw',
+                url='https://example.com/cafe.jpg',
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
+                action=URIAction(uri='http://example.com', label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text='renbot', weight='bold', size='xl'),
+                    TextComponent(text='Brown Cafe', weight='bold', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
@@ -216,7 +176,7 @@ def handle_message(event):
                                         flex=1
                                     ),
                                     TextComponent(
-                                        text='Tangerang, Indonesia',
+                                        text='Shinjuku, Tokyo',
                                         wrap=True,
                                         color='#666666',
                                         size='sm',
@@ -257,7 +217,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='renbot', uri="https://line.me/ti/p/~tiodarren")
+                        action=URIAction(label='WEBSITE', uri="https://example.com")
                     )
                 ]
             ),
@@ -267,241 +227,8 @@ def handle_message(event):
             event.reply_token,
             message
         )
-        
-#=====[ FLEX MESSAGE ]==========
-    elif text == 'flexs':
-        bubble = BubbleContainer(
-            direction='ltr',
-            #hero=ImageComponent(
-            #    url='https://lh5.googleusercontent.com/VoOmR6tVRwKEow0HySsJ_UdrQrqrpwUwSzQnGa0yBeqSex-4Osar2w-JohT6yPu4Vl4qchND78aU2c5a5Bhl=w1366-h641-rw',
-            #    size='full',
-            #    aspect_ratio='20:13',
-            #    aspect_mode='cover',
-            #    action=URIAction(uri='http://line.me/ti/p/~tiodarren', label='label')
-            #),
-            body=BoxComponent(
-                layout='vertical',
-                contents=[
-                    # title
-                    TextComponent(text='Berita Terbaru ToramOnline', weight='bold', size='xs'),
-                    # review
-                    #BoxComponent(
-                    #    layout='baseline',
-                    #    margin='md',
-                    #    contents=[
-                    #        IconComponent(size='sm', url='https://ubisafe.org/images/orange-transparent-stars-3.gif'),
-                    #        IconComponent(size='sm', url='https://ubisafe.org/images/orange-transparent-stars-3.gif'),
-                    #        IconComponent(size='sm', url='https://ubisafe.org/images/orange-transparent-stars-3.gif'),
-                    #        IconComponent(size='sm', url='https://ubisafe.org/images/orange-transparent-stars-3.gif'),
-                    #        IconComponent(size='sm', url='http://www.clker.com/cliparts/2/4/T/f/0/4/star-grey-hi.png'),
-                    #        TextComponent(text='4.0', size='sm', color='#999999', margin='md',
-                    #                      flex=0)
-                    #    ]
-                    #),
-                    # info
-                    BoxComponent(
-                        layout='vertical',
-                        margin='lg',
-                        spacing='sm',
-                        contents=[
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='Time:',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text='Ini Jam',
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5
-                                    )
-                                ],
-                            ),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='Title:',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text="Judul.................................................",
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5,
-                                    ),
-                                ],
-                            ),
-                        ],
-                    )
-                ],
-            ),
-            footer=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    # separator
-                    SeparatorComponent(),
-                    # websiteAction
-                    ButtonComponent(
-                        color='#1DB446',
-                        style='link',
-                        height='sm',
-                        action=URIAction(uri="http://id.toram.jp/information/?type_code=all",label='See More...')
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
-        line_bot_api.reply_message(
-            event.reply_token,
-            message
-        )
-        
-    if text == 'toramnews':
-    #============TESTING======================
-        source = requests.get('http://id.toram.jp/information/?type_code=all/')
-        bsoup = BeautifulSoup(source.text, 'html5lib')
-        dataraw = bsoup.find('div',{'class':'useBox'}) #find tag <div class=> in source
-        dataa = dataraw.find_all('li') #find all tags<li> in dataraw <div>
-        i = 0
-        hasil = "「Berita Terbaru ToramOnline」\n"
-        for final in dataa :
-            while i <=8 :
-                data = dataa[i].find('a')
-                #time = data.find('time').text
-                link = data.get('href')
-                title3 = data.text
-                title2 = title3.replace("2019-","Time: 2019-")
-                title = title2.replace("								","\nTitles: ")
-                #titles = title.replace("								","")
-                #titletime = time +' '+ title #time title
-                links = "http://id.toram.jp"+link #http://id.toram.jp/link
-                #===================================================#
-                web = requests.get("https://tinyurl.com/create.php?source=indexpage&url="+ links)
-                shorturl = BeautifulSoup(web.text, 'html5lib')
-                short  = shorturl.find_all('div',class_='indent')
-                short = short[1].find('b').text
-                #====================================================#
-                hasil += "\n"+title+"\nLink: "+short
-                i=i+1
-            else :
-               pass
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hasil + "\n\nSelengkapnya Lihat Disini" "\nhttp://id.toram.jp/information/?type_code=all"))
-
-    #=========================================
-    """
-            bubble = BubbleContainer(
-            direction='ltr',
-            body=BoxComponent(
-                layout='vertical',
-                contents=[
-                    # title
-                    TextComponent(text='Berita Terbaru ToramOnline', weight='bold', size='xs'),
-                    # info
-                    BoxComponent(
-                        layout='vertical',
-                        margin='lg',
-                        spacing='sm',
-                        contents=[
-                            #BoxComponent(
-                            #    layout='baseline',
-                            #    spacing='sm',
-                            #    contents=[
-                            #       TextComponent(
-                            #            text='Time:',
-                            #            color='#aaaaaa',
-                            #           size='sm',
-                            #            flex=1
-                            #        ),
-                            #        TextComponent(
-                            #            text='Ini Jam',
-                            #            wrap=True,
-                            #            color='#666666',
-                            #            size='sm',
-                            #            flex=5
-                            #        )
-                            #    ],
-                            #),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='Title:',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text=titles,
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5,
-                                    ),
-                                ],
-                            ),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='Link:',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text=short,
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5,
-                                    ),
-                                ],
-                            ),
-                        ],
-                    )
-                ],
-            ),
-            footer=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    # separator
-                    SeparatorComponent(),
-                    # websiteAction
-                    ButtonComponent(
-                        color='#1DB446',
-                        style='link',
-                        height='sm',
-                        action=URIAction(uri="http://id.toram.jp/information/?type_code=all",label='See More...')
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
-        line_bot_api.reply_message(
-            event.reply_token,
-            message
-        )
-    """
-        
-        
-        
 #=======================================================================================================================
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
