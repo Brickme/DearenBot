@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-/////
 from flask import Flask, request, abort
 
 from linebot import (
@@ -35,19 +36,25 @@ from linebot.models import (
 
 app = Flask(__name__)
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # Channel Access Token
-line_bot_api = LineBotApi('change to your channel access token')
+line_bot_api = LineBotApi('cTWmUANh7KGLR4Cxc86sr9cO8OBFBBhBL+C5jq0d+3t4IgtAVqE/Rd9YVA/NgjeuttBPAeJW5QBEFn5ur3wHRfEViZcScGhbg2NrEMaTNeC0+V6N64JUwOmEbnbAkd69yv/MZ/+8SzrISK7SsOnbAwdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('change to your channel secret')
+handler = WebhookHandler('5e4444d3b86cf740212e7d8e8764a1fc')
 #===========[ NOTE SAVER ]=======================
 notes = {}
+#========================== MODULE BOTS ===================================#
+keyword =  {"rom":False}
+
 #================================================
 #index web
 @app.route("/", methods=['GET'])
 def index(): 
-    indexs = ('Hello World!')
+    indexs = ('Hello Worlds!')
     return indexs
-
+  
 # Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -82,7 +89,7 @@ def handle_message(event):
 #=====[ TEMPLATE MESSAGE ]=============
     elif text == '/template':
         buttons_template = TemplateSendMessage(
-            alt_text='template',
+            alt_text='templates',
             template=ButtonsTemplate(
                 title='[ TEMPLATE MSG ]',
                 text= 'Tap the Button',
@@ -104,6 +111,25 @@ def handle_message(event):
         )
         
         line_bot_api.reply_message(event.reply_token, buttons_template)
+        
+    elif text == '/renbot':
+        keyword["rom"]=True
+        line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="silahkan masukan pencarian"))
+                
+    elif keyword["rom"] == True:
+        try:
+            keyword["rom"]=False
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=text))
+        except Exception as e:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=str(e)))
+        
+        
 #=====[ CAROUSEL MESSAGE ]==========
     elif text == 'help':
         message = TemplateSendMessage(
@@ -356,8 +382,8 @@ def handle_message(event):
                 #time = data.find('time').text
                 link = data.get('href')
                 title3 = data.text
-                title2 = title3.replace("2018-","Time: 2018-")
-                title = title2.replace("								","\nTitle: ")
+                title2 = title3.replace("2019-","Time: 2019-")
+                title = title2.replace("								","\nTitles: ")
                 #titles = title.replace("								","")
                 #titletime = time +' '+ title #time title
                 links = "http://id.toram.jp"+link #http://id.toram.jp/link
@@ -477,5 +503,4 @@ def handle_message(event):
 #=======================================================================================================================
 import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
