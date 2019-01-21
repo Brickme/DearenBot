@@ -33,15 +33,11 @@ from linebot.models import (
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('YOUR CHANNEL ACCESS TOKEN')
+line_bot_api = LineBotApi('ISI TOKEN OA KALIAN')
 # Channel Secret
-handler = WebhookHandler('YOUR CHANEL SCREET')
+handler = WebhookHandler('ISI CHHANEL SCREET')
 #===========[ NOTE SAVER ]=======================
 notes = {}
-
-@app.route("/", methods=['GET'])
-def index():
-    return 'HelloWorld'
 
 # Post Request
 @app.route("/callback", methods=['POST'])
@@ -60,7 +56,7 @@ def handle_message(event):
     text = event.message.text #simplify for receove message
     sender = event.source.user_id #get user_id
     gid = event.source.sender_id #get group_id
-#=====[ LEAVE GROUP OR ROOM ]==========[ ARSYBAI ]======================
+#=====[ LEAVE GROUP OR ROOM ]==========
     if text == 'bye':
         if isinstance(event.source, SourceGroup):
             line_bot_api.reply_message(
@@ -74,7 +70,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't leave from 1:1 chat"))
-#=====[ TEMPLATE MESSAGE ]=============[ ARSYBAI ]======================
+#=====[ TEMPLATE MESSAGE ]=============
     elif text == '/template':
         buttons_template = TemplateSendMessage(
             alt_text='template',
@@ -84,44 +80,44 @@ def handle_message(event):
                 actions=[
                     MessageTemplateAction(
                         label='Culum 1',
-                        text='/arsybai'
+                        text='/aditmadzs'
                     ),
                     MessageTemplateAction(
                         label='CULUM 2',
-                        text='/arsybai'
+                        text='/aditmadzs'
                     ),
                     MessageTemplateAction(
                         label='CULUM 3',
-                        text='/arsybai'
+                        text='/aditmadzs'
                     )
                 ]
             )
         )
         
         line_bot_api.reply_message(event.reply_token, buttons_template)
-#=====[ CAROUSEL MESSAGE ]==========[ ARSYBAI ]======================
+#=====[ CAROUSEL MESSAGE ]==========
     elif text == '/carousel':
         message = TemplateSendMessage(
             alt_text='OTHER MENU',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        title='CAROUSEL 1',
-                        text='This Carousel URI action',
+                        title='ADD ME',
+                        text='Contact Aditmadzs',
                         actions=[
                             URITemplateAction(
-                                label='>carousel 1<',
-                                uri='https://line.me/ti/p/~arsy22bai'
+                                label='>TAP HERE<',
+                                uri='https://line.me/ti/p/~adit_cmct'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        title='ABAI-API',
-                        text='API documentation',
+                        title='Instagram',
+                        text='FIND ME ON INSTAGRAM',
                         actions=[
                             URITemplateAction(
-                                label='>Visit<',
-                                uri='https://arsybaiapi.herokuapp.com'
+                                label='>TAP HERE!<',
+                                uri='http://line.me/ti/p/~adit_cmct'
                             )
                         ]
                     )
@@ -129,22 +125,22 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token, message)
-#=====[ FLEX MESSAGE ]==========[ ARSYBAI ]======================
+#=====[ FLEX MESSAGE ]==========
     elif text == 'flex':
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url='https://example.com/cafe.jpg',
+                url='https://lh5.googleusercontent.com/VoOmR6tVRwKEow0HySsJ_UdrQrqrpwUwSzQnGa0yBeqSex-4Osar2w-JohT6yPu4Vl4qchND78aU2c5a5Bhl=w1366-h641-rw',
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://example.com', label='label')
+                action=URIAction(uri='http://line.me/ti/p/~adit_cmct', label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text='Brown Cafe', weight='bold', size='xl'),
+                    TextComponent(text='Aditmadzs', weight='bold', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
@@ -176,7 +172,7 @@ def handle_message(event):
                                         flex=1
                                     ),
                                     TextComponent(
-                                        text='Shinjuku, Tokyo',
+                                        text='Tangerang, Indonesia',
                                         wrap=True,
                                         color='#666666',
                                         size='sm',
@@ -217,7 +213,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='WEBSITE', uri="https://example.com")
+                        action=URIAction(label='Aditmadzs', uri="https://line.me/ti/p/~adit_cmct")
                     )
                 ]
             ),
@@ -231,4 +227,4 @@ def handle_message(event):
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
