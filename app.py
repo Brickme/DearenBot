@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, requests, abort,json
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -233,6 +233,11 @@ def handle_message(event):
         
 #=====[ FLEX MESSAGE ]==========
     elif text == '!price':
+        sep = text.split(" ")
+        search = sep.replace(sep[0]+" ","")
+        api = requests.get("https://www.romexchange.com/api?item="+search+"&sort_server={}&sort_range={}&exact=false".format(str("sea"), str("week")))
+        data = api.text
+        data = json.loads(data)
         bubble = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
@@ -263,7 +268,8 @@ def handle_message(event):
                             BoxComponent(
                                 layout='baseline',
                                 spacing='sm',
-                                contents=[
+                                for name in data:
+                                 contents=[
                                     TextComponent(
                                         text='SEA',
                                         color='#aaaaaa',
@@ -271,13 +277,13 @@ def handle_message(event):
                                         flex=1
                                     ),
                                     TextComponent(
-                                        text='Tangerang, Indonesia',
+                                        text= '{}'.format(str(name["name"])),
                                         wrap=True,
                                         color='#666666',
                                         size='sm',
                                         flex=5
                                     )
-                                ],
+                                 ],
                             ),
                             BoxComponent(
                                 layout='baseline',
