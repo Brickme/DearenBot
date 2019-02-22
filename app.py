@@ -268,8 +268,8 @@ def handle_message(event):
                             BoxComponent(
                                 layout='baseline',
                                 spacing='sm',
-                                for name in data:
-                                 contents=[
+                                contents=[
+                                 for name in data:
                                     TextComponent(
                                         text='SEA',
                                         color='#aaaaaa',
@@ -283,7 +283,7 @@ def handle_message(event):
                                         size='sm',
                                         flex=5
                                     )
-                                 ],
+                                ],
                             ),
                             BoxComponent(
                                 layout='baseline',
