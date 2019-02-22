@@ -235,13 +235,6 @@ def handle_message(event):
     elif text == '!price':
         bubble = BubbleContainer(
             direction='ltr',
-            hero=ImageComponent(
-                url='https://lh5.googleusercontent.com/VoOmR6tVRwKEow0HySsJ_UdrQrqrpwUwSzQnGa0yBeqSex-4Osar2w-JohT6yPu4Vl4qchND78aU2c5a5Bhl=w1366-h641-rw',
-                size='full',
-                aspect_ratio='20:13',
-                aspect_mode='cover',
-                action=URIAction(uri='http://line.me/ti/p/~adit_cmct', label='label')
-            ),
             body=BoxComponent(
                 layout='vertical',
                 contents=[
@@ -272,7 +265,7 @@ def handle_message(event):
                                 spacing='sm',
                                 contents=[
                                     TextComponent(
-                                        text='Place',
+                                        text='SEA',
                                         color='#aaaaaa',
                                         size='sm',
                                         flex=1
@@ -291,7 +284,7 @@ def handle_message(event):
                                 spacing='sm',
                                 contents=[
                                     TextComponent(
-                                        text='Time',
+                                        text='Global',
                                         color='#aaaaaa',
                                         size='sm',
                                         flex=1
