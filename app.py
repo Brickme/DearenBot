@@ -265,51 +265,26 @@ def handle_message(event):
                         margin='lg',
                         spacing='sm',
                         contents=[
-                        #starto
-                        try:
-                          for name in data:
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                 for name in data:
-                                    TextComponent(
-                                        text='SEA',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text= '{}'.format(str(name["name"])),
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5
-                                    )
-                                ],
-                            ),
-                        except Exception as e:
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                 for name in data:
-                                    TextComponent(
-                                        text='SEA',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text= '{}'.format(str(e)),
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5
-                                    )
-                                ],
-                            ),
-                          #ENDnya smpe sini dlu
+                            for name in data:
+                                BoxComponent(
+                                    layout='baseline',
+                                    spacing='sm',
+                                    contents=[
+                                        TextComponent(
+                                            text='SEA',
+                                            color='#aaaaaa',
+                                            size='sm',
+                                            flex=1
+                                        ),
+                                        TextComponent(
+                                            text= '{}'.format(str(name["name"])),
+                                            wrap=True,
+                                            color='#666666',
+                                            size='sm',
+                                            flex=5
+                                        )
+                                    ],
+                                ),
                             BoxComponent(
                                 layout='baseline',
                                 spacing='sm',
